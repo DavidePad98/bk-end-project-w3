@@ -1,20 +1,30 @@
 package entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+@Entity
+@Table(name = "prestiti")
 public class Prestito {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_prestito")
+    private int id_prestito;
+    @ManyToOne
+    @JoinColumn(name = "users-d")
     private Utente utente;
-    private ElementoPrestato elemento;
+    @ManyToOne
+     @JoinColumn(name = "univoco")
+    private Catalogo elemento;
+    @Column(name = "data_prestito")
     private LocalDate data_prestito;
+    @Column(name = "data_r_prevista")
     private LocalDate data_r_prevista;
+    @Column(name = "data_r_effettiva")
     private LocalDate data_r_effettiva;
 
-    public Prestito(Utente utente, ElementoPrestato elemento, LocalDate data_prestito, LocalDate data_r_prevista, LocalDate data_r_effettiva) {
+
+    public Prestito(Utente utente, Catalogo elemento, LocalDate data_prestito, LocalDate data_r_prevista, LocalDate data_r_effettiva) {
         this.utente = utente;
         this.elemento = elemento;
         this.data_prestito = data_prestito;
@@ -30,11 +40,12 @@ public class Prestito {
         this.utente = utente;
     }
 
-    public ElementoPrestato getElemento() {
+
+    public Catalogo getElemento() {
         return elemento;
     }
 
-    public void setElemento(ElementoPrestato elemento) {
+    public void setElemento(Catalogo elemento) {
         this.elemento = elemento;
     }
 

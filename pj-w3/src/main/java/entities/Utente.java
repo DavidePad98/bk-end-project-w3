@@ -1,14 +1,22 @@
 package entities;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class Utente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "n_tessera")
+    private int numero_tessera;
     private String nome;
     private String cognome;
     private LocalDate data_nascita;
-    private int numero_tessera;
+    @OneToMany(mappedBy = "utente")
+    private List<Prestito> prestiti;
 
     public Utente(String nome, String cognome, LocalDate data_nascita, int numero_tessera) {
         this.nome = nome;

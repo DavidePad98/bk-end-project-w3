@@ -6,13 +6,14 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
-
+@Entity
+@Table(name = "books")
 public class Libri extends Catalogo{
 private  String autore;
-
+@Enumerated(EnumType.STRING)
 private  Genere genere;
-    public Libri(long isbn, String titolo, int annoPubblicazione, int numeroPagine) {
-        super(isbn, titolo, annoPubblicazione, numeroPagine);
+    public Libri( String titolo, int annoPubblicazione, int numeroPagine) {
+        super( titolo, annoPubblicazione, numeroPagine);
         this.autore=autore;
         this.genere=genere;
     }

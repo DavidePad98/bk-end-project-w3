@@ -1,22 +1,27 @@
 package entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.example.Application;
 
+import java.util.List;
 
+@Entity
+@Table(name = "catalogue")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Catalogo {
-
-    protected final long ISBN;
+    @Id
+    protected final String ISBN;
     protected final String titolo;
     protected final int anno_pubblicazione;
     protected final int numero_pagine;
+    @OneToMany(mappedBy = "elemento")
+    List<Prestito> prestiti;
 
-    public Catalogo(long isbn, String titolo, int annoPubblicazione, int numeroPagine) {
-        ISBN = isbn;
+    public Catalogo( String titolo, int annoPubblicazione, int numeroPagine) {
+        this.ISBN = Application.faker.code().isbn10();
         this.titolo = titolo;
-        anno_pubblicazione = annoPubblicazione;
-        numero_pagine = numeroPagine;
+        this.anno_pubblicazione = annoPubblicazione;
+        this.numero_pagine = numeroPagine;
     }
 
     public String getTitolo() {

@@ -1,13 +1,20 @@
 package entities;
 
 import enums.Periodicita;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "magazine")
 public class Riviste extends Catalogo {
+    @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
 
 
-    public Riviste(long isbn, String titolo, int annoPubblicazione, int numeroPagine) {
-        super(isbn, titolo, annoPubblicazione, numeroPagine);
+    public Riviste( String titolo, int annoPubblicazione, int numeroPagine) {
+        super( titolo, annoPubblicazione, numeroPagine);
         this.periodicita = periodicita;
     }
 
