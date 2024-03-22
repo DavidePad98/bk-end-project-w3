@@ -1,8 +1,11 @@
 package dao;
 
+import entities.Libri;
 import entities.Prestito;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+
+import java.util.List;
 
 public class PrestitiDAO {
     private final EntityManager em;
@@ -18,4 +21,6 @@ public class PrestitiDAO {
         tr.commit();
         System.out.println("Il prestito destinato a: " + prestiti.getUtente() + " è stato salvato");
     }
+
+    public List<Prestito> prestitiDataTesseraUtente()
 }

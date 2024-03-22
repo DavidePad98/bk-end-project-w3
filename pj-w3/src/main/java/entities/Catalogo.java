@@ -10,6 +10,7 @@ import java.util.List;
 @Table(name = "catalogue")
 @Inheritance(strategy = InheritanceType.JOINED)
 @NamedQuery(name= "findByPubYear", query = "SELECT c FROM Catalogo c WHERE c.anno_pubblicazione = :anno")
+@NamedQuery(name = "fByT", query = "SELECT c FROM Catalogo c WHERE LOWER(c.titolo) LIKE LOWER(:titolo)")
 public abstract class Catalogo {
     @Id
     protected  String ISBN;

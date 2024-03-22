@@ -54,5 +54,10 @@ public class CatalogoDAO {
         return query.getResultList();
     }
 
+    public List<Catalogo> findByTitle(String titolo){
+        TypedQuery<Catalogo> query = em.createNamedQuery("fByT", Catalogo.class);
+        query.setParameter("titolo", "%" + titolo + "%");
+        return query.getResultList();
+    }
 
 }
