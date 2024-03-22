@@ -6,16 +6,22 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "books")
 public class Libri extends Catalogo{
 private  String autore;
 @Enumerated(EnumType.STRING)
 private  Genere genere;
-    public Libri( String titolo, int annoPubblicazione, int numeroPagine) {
+    public Libri(String titolo, LocalDate annoPubblicazione, int numeroPagine, String autore, Genere genere) {
         super( titolo, annoPubblicazione, numeroPagine);
         this.autore=autore;
         this.genere=genere;
+    }
+
+    public Libri() {
+
     }
 
     public String getAutore() {

@@ -18,11 +18,11 @@ public class Utente {
     @OneToMany(mappedBy = "utente")
     private List<Prestito> prestiti;
 
-    public Utente(String nome, String cognome, LocalDate data_nascita, int numero_tessera) {
+    public Utente(String nome, String cognome, LocalDate data_nascita) {
         this.nome = nome;
         this.cognome = cognome;
         this.data_nascita = data_nascita;
-        this.numero_tessera = numero_tessera;
+
     }
 
     public String getNome() {
@@ -53,9 +53,6 @@ public class Utente {
         return numero_tessera;
     }
 
-    public void setNumero_tessera(int numero_tessera) {
-        this.numero_tessera = numero_tessera;
-    }
 
     @Override
     public String toString() {
@@ -63,7 +60,6 @@ public class Utente {
                 "nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
                 ", data_nascita=" + data_nascita +
-                ", numero_tessera=" + numero_tessera +
                 '}';
     }
 }

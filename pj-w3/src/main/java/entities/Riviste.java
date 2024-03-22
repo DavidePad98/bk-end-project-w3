@@ -6,6 +6,8 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "magazine")
 public class Riviste extends Catalogo {
@@ -13,9 +15,12 @@ public class Riviste extends Catalogo {
     private Periodicita periodicita;
 
 
-    public Riviste( String titolo, int annoPubblicazione, int numeroPagine) {
+    public Riviste(String titolo, LocalDate annoPubblicazione, int numeroPagine, Periodicita periodicita) {
         super( titolo, annoPubblicazione, numeroPagine);
         this.periodicita = periodicita;
+    }
+
+    public Riviste() {
     }
 
     public Periodicita getPeriodicita() {
