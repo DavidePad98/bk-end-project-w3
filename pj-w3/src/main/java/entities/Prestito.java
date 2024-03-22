@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 @Entity
 @Table(name = "prestiti")
-@NamedQuery(name = "ricercaPrestitiPerTessera", query = "SELECT p FROM Prestito p WHERE p.")
+@NamedQuery(name = "ricercaPrestitiPerTessera", query = "SELECT p FROM Prestito p WHERE p.utente.numero_tessera = :numero_tessera AND p.data_r_effettiva >= CURRENT_DATE")
 public class Prestito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,9 @@ public class Prestito {
         this.data_prestito = data_prestito;
         this.data_r_prevista = data_prestito.plusDays(30);
         this.data_r_effettiva = data_r_effettiva;
+    }
+
+    public Prestito() {
     }
 
     public Utente getUtente() {

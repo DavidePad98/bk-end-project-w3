@@ -25,4 +25,11 @@ public class UtenteDAO {
         }
         return user;
     }
+    public Utente findById(int id){
+        Utente utente = em.find(Utente.class, id);
+        if (utente == null){
+            System.out.println("errore");
+        }
+        return utente;
+    }
 }

@@ -2,8 +2,10 @@ package dao;
 
 import entities.Libri;
 import entities.Prestito;
+import entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
@@ -22,5 +24,9 @@ public class PrestitiDAO {
         System.out.println("Il prestito destinato a: " + prestiti.getUtente() + " è stato salvato");
     }
 
-    public List<Prestito> prestitiDataTesseraUtente()
+    public List<Prestito> ricercaPrestitiPerTessera(int n){
+        TypedQuery<Prestito> query = em.createNamedQuery("ricercaPrestitiPerTessera", Prestito.class);
+        query.setParameter("numero_tessera", n);
+        return query.getResultList();
+    }
 }

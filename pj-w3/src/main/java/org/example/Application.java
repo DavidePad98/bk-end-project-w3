@@ -62,6 +62,9 @@ public class Application {
 //        pd.save(new Prestito(ud.findUsertByIdTessera(4), cd.findElementByISBN("099541971X"), LocalDate.of(2022,12,30),  LocalDate.of(2024,12,10)));
 //        pd.save(new Prestito(ud.findUsertByIdTessera(4), cd.findElementByISBN("1967694788"), LocalDate.of(2021,4,7),  LocalDate.of(2024,12,10)));
 //        pd.save(new Prestito(ud.findUsertByIdTessera(2), cd.findElementByISBN("1967694788"), LocalDate.of(2020,1,9),  LocalDate.of(2024,12,10)));
+//        pd.save(new Prestito(ud.findUsertByIdTessera(1), cd.findElementByISBN("1967694788"), LocalDate.of(2020,1,9),  LocalDate.of(2024,1,10)));
+//        pd.save(new Prestito(ud.findUsertByIdTessera(5), cd.findElementByISBN("1967694788"), LocalDate.of(2020,1,9),  LocalDate.of(2024,1,10)));
+
 
         //++++++++++++++++++++++++++++ RICERCA ELEMENTI ++++++++++++++++++++++++++++++
 
@@ -81,5 +84,7 @@ public class Application {
 //        cd.findByTitle("a").forEach(System.out::println);
 //        cd.findByTitle("the").forEach(System.out::println);
 
+        //Ricerca prestiti NON scaduti dato il numero di tessera dell'utente
+//        pd.ricercaPrestitiPerTessera(5).forEach(System.out::println);
     }
 }
