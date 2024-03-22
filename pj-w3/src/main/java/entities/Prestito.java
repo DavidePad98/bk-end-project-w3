@@ -40,6 +40,11 @@ public class Prestito {
         this.utente = utente;
     }
 
+    public int getId_prestito() {
+        return id_prestito;
+    }
+
+
 
     public Catalogo getElemento() {
         return elemento;

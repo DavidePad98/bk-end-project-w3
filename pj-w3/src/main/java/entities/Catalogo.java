@@ -9,16 +9,17 @@ import java.util.List;
 @Entity
 @Table(name = "catalogue")
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQuery(name= "findByPubYear", query = "SELECT c FROM Catalogo c WHERE c.anno_pubblicazione = :anno")
 public abstract class Catalogo {
     @Id
     protected  String ISBN;
     protected  String titolo;
-    protected  LocalDate anno_pubblicazione;
+    protected  int anno_pubblicazione;
     protected  int numero_pagine;
     @OneToMany(mappedBy = "elemento")
     List<Prestito> prestiti;
 
-    public Catalogo( String titolo, LocalDate annoPubblicazione, int numeroPagine) {
+    public Catalogo( String titolo, int annoPubblicazione, int numeroPagine) {
         this.ISBN = Application.faker.code().isbn10();
         this.titolo = titolo;
         this.anno_pubblicazione = annoPubblicazione;
@@ -36,7 +37,7 @@ public abstract class Catalogo {
         return titolo;
     }
 
-    public LocalDate getAnno_pubblicazione() {
+    public int getAnno_pubblicazione() {
         return anno_pubblicazione;
     }
 

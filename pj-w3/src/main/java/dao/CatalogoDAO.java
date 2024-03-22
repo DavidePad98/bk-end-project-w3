@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class CatalogoDAO {
@@ -40,5 +41,18 @@ public class CatalogoDAO {
         transaction.commit();
         System.out.println("elemento eliminato");
     }
+
+    public List<Catalogo> findByPubYear(int anno){
+        TypedQuery<Catalogo> query = em.createNamedQuery("findByPubYear", Catalogo.class);
+        query.setParameter("anno", anno);
+        return query.getResultList();
+    }
+
+    public List<Libri> findByAuthor(String autore){
+        TypedQuery<Libri> query = em.createQuery("SELECT l FROM Libri l WHERE l.autore = :autore", Libri.class);
+        query.setParameter("autore", autore);
+        return query.getResultList();
+    }
+
 
 }

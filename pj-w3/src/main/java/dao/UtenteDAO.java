@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Catalogo;
 import entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -17,5 +18,11 @@ public class UtenteDAO {
         transaction.commit();
         System.out.println("L'utente " + utente.getNome() + " è stato salvato correttamente!");
     }
-
+    public Utente findUsertByIdTessera(int numero_tessera){
+        Utente user = em.find(Utente.class, numero_tessera);
+        if (user == null){
+            System.out.println("errore, non trovato");
+        }
+        return user;
+    }
 }
