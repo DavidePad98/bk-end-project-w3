@@ -29,4 +29,10 @@ public class PrestitiDAO {
         query.setParameter("numero_tessera", n);
         return query.getResultList();
     }
+
+    public List<Prestito> ricercaPrestitiScaduti(){
+        TypedQuery<Prestito> query = em.createNamedQuery("pres", Prestito.class);
+        return query.getResultList();
+    }
+
 }

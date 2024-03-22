@@ -6,6 +6,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "prestiti")
 @NamedQuery(name = "ricercaPrestitiPerTessera", query = "SELECT p FROM Prestito p WHERE p.utente.numero_tessera = :numero_tessera AND p.data_r_effettiva >= CURRENT_DATE")
+@NamedQuery(name = "pres", query = "SELECT p FROM Prestito p WHERE  p.data_r_prevista < CURRENT_DATE AND p.data_r_effettiva < CURRENT_DATE")
 public class Prestito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
